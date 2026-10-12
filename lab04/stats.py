@@ -47,3 +47,19 @@ def warmest_city(records: list[dict]) -> str:
             best = city
 
     return best
+
+def read_valid(lines: list[str]) -> list[dict]:
+    records = []
+
+    for line in lines:
+        if line == "":
+            continue
+
+        try:
+            record = parse_record(line)
+        except ValueError:
+            continue
+
+        records.append(record)
+
+    return records
