@@ -1,7 +1,20 @@
 def parse_record(line: str) -> dict:
-    city, temp, date = line.split(";")
-    return {"city": city, "temp": float(temp), "date": date}
+    parts = line.split(";")
 
+    if len(parts) != 3:
+        raise ValueError("В строке должно быть ровно три поля")
+
+    city, temp, date = parts
+
+    if city == "" or date == "":
+        raise ValueError("Город и дата не должны быть пустыми")
+
+    try:
+        temp_value = float(temp)
+    except ValueError:
+        raise ValueError("Температура должна быть числом")
+
+    return {"city": city, "temp": temp_value, "date": date}
 def average_by_city(records: list[dict]) -> dict:
     total = {}
     count = {}
