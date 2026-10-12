@@ -4,26 +4,26 @@ def parse_record(line: str) -> dict:
     if len(parts) != 3:
         raise ValueError("В строке должно быть ровно три поля")
 
-    city, temp, date = parts
+    city, temperature, date = parts
 
     if city == "" or date == "":
         raise ValueError("Город и дата не должны быть пустыми")
 
     try:
-        temp_value = float(temp)
+        temperature_value = float(temperature)
     except ValueError:
         raise ValueError("Температура должна быть числом")
 
-    return {"city": city, "temp": temp_value, "date": date}
+    return {"city": city, "temperature": temperature_value, "date": date}
 def average_by_city(records: list[dict]) -> dict:
     total = {}
     count = {}
 
     for record in records:
         city = record["city"]
-        temp = record["temp"]
+        temperature = record["temperature"]
 
-        total[city] = total.get(city, 0) + temp
+        total[city] = total.get(city, 0) + temperature
         count[city] = count.get(city, 0) + 1
 
     result = {}
