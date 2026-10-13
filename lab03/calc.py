@@ -3,3 +3,4 @@ b = float(input("b = "))
 
 print("Сумма:", a + b)
 print("Разность:", a - b)
+print("Произведение:", a * b)
