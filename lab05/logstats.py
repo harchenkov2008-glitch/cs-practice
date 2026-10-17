@@ -6,12 +6,12 @@ def parse_event(line: str) -> dict:
     parts = text.split(maxsplit=2)
 
     if len(parts) != 3:
-        raise ValueError("bad line")
+        raise ValueError(f"bad line: {line!r}")
 
     time, level, message = parts
 
     if level not in LEVELS or not time or not message:
-        raise ValueError("bad line")
+        raise ValueError(f"bad line: {line!r}")
 
     return {
         "time": time,
